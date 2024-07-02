@@ -1,0 +1,78 @@
+<div class="max-w-4xl mx-auto my-2 p-1 bg-slate-400">
+  <form [formGroup]="taskForm" (ngSubmit)="submitForm()" class="bg-white shadow-md rounded p-2">
+    <div class="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+      
+      <!-- Title and Description -->
+      <div class="w-full md:w-1/2 space-y-4">
+        <!-- Title -->
+        <div>
+          <label class="block text-gray-700 text-sm font-bold" for="title">Title</label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="title" type="text" placeholder="Enter Title" formControlName="title">
+          <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="text-red-500 text-sm">
+            Title is required.
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div>
+          <label class="block text-gray-700 text-sm font-bold" for="description">Description</label>
+          <textarea
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="description" placeholder="Enter Description" formControlName="description" rows="2"></textarea>
+          <div *ngIf="taskForm.get('description')?.invalid && taskForm.get('description')?.touched" class="text-red-500 text-sm">
+            Description is required.
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex items-center justify-start mt-4">
+          <button
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+            type="submit">
+            Save Task
+          </button>
+        </div>
+      </div>
+
+      <!-- Priority Level, Due Date, and Status -->
+      <div class="w-full md:w-1/2 space-y-4">
+        <!-- Due Date -->
+        <div>
+          <label class="block text-gray-700 text-sm font-bold" for="due_date">Due Date</label>
+          <input
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="due_date" type="date" formControlName="due_date">
+          <div *ngIf="taskForm.get('due_date')?.invalid && taskForm.get('due_date')?.touched" class="text-red-500 text-sm">
+            Due date is required.
+          </div>
+        </div>
+
+        <!-- Priority Level -->
+        <div>
+          <label class="block text-gray-700 text-sm font-bold" for="priority_level">Priority Level</label>
+          <select
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="priority_level" formControlName="priority_level">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+
+        <!-- Status -->
+        <div>
+          <label class="block text-gray-700 text-sm font-bold" for="status">Status</label>
+          <select
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="status" formControlName="status">
+            <option value="todo">Todo</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

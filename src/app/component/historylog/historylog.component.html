@@ -1,0 +1,28 @@
+<!-- history-log.component.html -->
+<div class="container mx-auto">
+    <h1 class="font-bold ">History Log</h1>
+   
+        <table class="w-fit bg-white border border-gray-200">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">ID</th>
+                    <th class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">Task ID</th>
+                    <th class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">Action</th>
+                    <th class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">Details</th>
+                    <th class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">Created At</th>
+                    <th class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">Updated At</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                    <td class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">{{ history._id }}</td>
+                    <td class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">{{ history.taskId }}</td>
+                    <td class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">{{ history.action }}</td>
+                    <td class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">{{ history.details }}</td>
+                    <td class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">{{ history.createdAt }}</td>
+                    <td class="px-4 py-2 border-b text-xs md:text-sm lg:text-base">{{ history.updatedAt }}</td>
+         
+            </tbody>
+        </table>
+ 
+</div>
