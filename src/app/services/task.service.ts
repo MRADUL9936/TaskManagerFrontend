@@ -10,7 +10,7 @@ import {History} from '../models/history.model';
 })
 export class TaskApiService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/tasks'; // Replace with the actual task API endpoint
+  private apiUrl = 'https://mytaskmanagerbackend.onrender.com/tasks'; // Replace with the actual task API endpoint
 
   constructor() { }
 
