@@ -9,6 +9,11 @@ export const selectAllTasks=createSelector(
     (state:TaskState)=>state.tasks
 );
 
+export const selectTasksLoading=createSelector(
+    selectTaskFeature,
+    (state:TaskState)=>state.Loading
+);
+
 export const selectTaskError=createSelector(
     selectTaskFeature,
     (state:TaskState)=>state.errorMessage
@@ -23,6 +28,10 @@ export const selectHistoryLogs = createSelector(
   (state: HistoryLogState) => state.historyLogs==null?[]:state.historyLogs
 );
 
+export const selectHistoryLoading = createSelector(
+  selectHistoryFeature,
+  (state: HistoryLogState) => state.loading
+);
 
 // Selector to get history error messages
 export const selectHistoryError = createSelector(

@@ -4,11 +4,13 @@ import * as TaskActions from './task.action';
 
 export interface TaskState{
     tasks: Task[];
+    Loading:boolean;
     errorMessage: string|null;
 }
 
 export const initialTaskState: TaskState={
  tasks:[],
+ Loading:false,
     errorMessage:null
 }
 
@@ -17,6 +19,12 @@ export const taskReducer= createReducer(
     on(TaskActions.loadTasksSuccess,(state,{tasks})=>({
         ...state,
         tasks,
+        Loading:false,
+        errorMessage:null
+    })),
+    on(TaskActions.loadTasks,(state)=>({
+        ...state,
+        Loading:true,
         errorMessage:null
     })),
     on (TaskActions.loadTasksFailure,(state,{errorMessage})=>({

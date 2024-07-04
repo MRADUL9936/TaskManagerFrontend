@@ -3,7 +3,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TaskState } from './taskstate/task.reducer';
 import { loadTasks, sortTask } from './taskstate/task.action';
-import { selectAllTasks, selectTaskError,selectHistoryError,selectHistoryLogs } from './taskstate/task.selector';
+import { selectAllTasks,selectTasksLoading, selectTaskError,selectHistoryError,selectHistoryLogs
+  ,selectHistoryLoading
+ } from './taskstate/task.selector';
 import { Task } from './models/task.model';
 import { CommonModule } from '@angular/common';
 import { TaskItemComponent } from './component/tasks/tasks.component';
@@ -22,15 +24,22 @@ import { History } from './models/history.model';
 })
 export class AppComponent implements OnInit {
   tasks$: Observable<Task[]>;
+  Loading$: Observable<boolean>;
   errorMessage$: Observable<string | null>;
+
+  //history logs variables
   history$:Observable<History[]>
   errorHistory$:Observable<string |null>;
+  loadingHistory$:Observable<boolean>;
+  historyLoadingWhenClicked=false;
 
   constructor(private store: Store<TaskState>) {
     this.tasks$ = this.store.select(selectAllTasks);
+    this.Loading$=this.store.select(selectTasksLoading);
     this.errorMessage$ = this.store.select(selectTaskError);
     this.history$=this.store.select(selectHistoryLogs)
     this.errorHistory$=this.store.select(selectHistoryError)
+    this.loadingHistory$=this.store.select(selectHistoryLoading)
   }
 
   ngOnInit() {
@@ -74,7 +83,8 @@ export class AppComponent implements OnInit {
 
 
   logHistory() {
-    
+    this.historyLoadingWhenClicked=true;
    this.store.dispatch(loadHistorylog());
+   
   }
 }
