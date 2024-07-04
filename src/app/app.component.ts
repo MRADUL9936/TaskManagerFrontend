@@ -14,7 +14,6 @@ import {saveAs} from 'file-saver';
 import {HistorylogComponent} from './component/historylog/historylog.component';
 import { loadHistorylog } from './taskstate/task.action';
 import { History } from './models/history.model';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -40,11 +39,12 @@ export class AppComponent implements OnInit {
     this.history$=this.store.select(selectHistoryLogs)
     this.errorHistory$=this.store.select(selectHistoryError)
     this.loadingHistory$=this.store.select(selectHistoryLoading)
+
   }
 
   ngOnInit() {
     this.store.dispatch(loadTasks());
-  
+
   }
 
   applySort(sortBy: string){
@@ -85,6 +85,7 @@ export class AppComponent implements OnInit {
   logHistory() {
     this.historyLoadingWhenClicked=true;
    this.store.dispatch(loadHistorylog());
+ 
    
   }
 }

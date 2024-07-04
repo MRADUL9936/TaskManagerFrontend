@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
      provideState({name:'history',reducer:historyLogReducer}),
      provideEffects(TaskEffect),
       provideHttpClient(),
-
+    
      
     ]
 };

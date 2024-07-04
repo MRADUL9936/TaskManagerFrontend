@@ -16,19 +16,21 @@ export const initialTaskState: TaskState={
 
 export const taskReducer= createReducer(
     initialTaskState,
+    on(TaskActions.loadTasks,(state)=>({
+      ...state,
+      Loading:true,
+      errorMessage:null
+  })),
     on(TaskActions.loadTasksSuccess,(state,{tasks})=>({
         ...state,
         tasks,
         Loading:false,
         errorMessage:null
     })),
-    on(TaskActions.loadTasks,(state)=>({
-        ...state,
-        Loading:true,
-        errorMessage:null
-    })),
+ 
     on (TaskActions.loadTasksFailure,(state,{errorMessage})=>({
         ...state,
+        Loading:false,
         errorMessage
     })
     ),
